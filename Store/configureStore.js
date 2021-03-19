@@ -1,5 +1,12 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore } from 'redux';
 import toggleFavorite from './Reducers/favoriteReducer'
 import setAvatar from './Reducers/avatarReducer'
+import {persistCombineReducers} from 'redux-persist'
+import AsyncStorage from '@react-native-community/async-storage';
 
-export default createStore(combineReducers({favorite: toggleFavorite, avatars: setAvatar}))
+const rootPersistConfig = {
+    key: 'root',
+    storage: AsyncStorage,
+}
+
+export default createStore(persistCombineReducers(rootPersistConfig, {favorite: toggleFavorite, avatars: setAvatar}))

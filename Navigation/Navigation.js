@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer } from '@react-navigation/native'
 import HomeScreen from "./HomeScreen"
 import FavorisScreen from "./FavorisScreen"
+import NewsScreen from "./NewsScreen"
 import { Image, StyleSheet } from 'react-native'
 
 const Tab = createBottomTabNavigator();
@@ -19,6 +20,8 @@ class Navigation extends React.Component {
                                 icon = require('../Images/search.png')
                             } else if (route.name === 'Favorites') {
                                 icon = require('../Images/heartfull.png')
+                            }else if(route.name === 'News'){
+                                icon = require('../Images/ic_fiber_new.png')
                             }
                             return <Image
                                 source={icon}
@@ -37,6 +40,7 @@ class Navigation extends React.Component {
                 >
                     <Tab.Screen name="Home" component={HomeScreen} />
                     <Tab.Screen name="Favorites" component={FavorisScreen} />
+                    <Tab.Screen name="News" component={NewsScreen} />
                 </Tab.Navigator>
             </NavigationContainer>
         )
